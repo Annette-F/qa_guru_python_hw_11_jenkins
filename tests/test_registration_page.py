@@ -3,7 +3,6 @@ from pages.form_page import StudentRegistrationPage
 import allure
 
 
-
 @allure.tag('registration_form')
 @allure.severity(Severity.CRITICAL)
 @allure.label('owner', 'Annette-F')
@@ -69,4 +68,3 @@ def test_student_registration_form():
             'Saint-Petersburg, 190000',
             'NCR Delhi'
         )
-
