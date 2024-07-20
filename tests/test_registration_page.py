@@ -1,9 +1,17 @@
+from allure_commons.types import Severity
 from pages.form_page import StudentRegistrationPage
 import allure
 
 
+
+@allure.tag('registration_form')
+@allure.severity(Severity.CRITICAL)
+@allure.label('owner', 'Annette-F')
+@allure.feature('Полная форма регистрация нового студента')
+@allure.story('Регистрация нового студента')
+@allure.link('https://demoqa.com/automation-practice-form', name='Demoqa')
 def test_student_registration_form():
-    with allure.step('Открываем форма регистрации студента'):
+    with allure.step('Открываем форму регистрации студента'):
         registration_page = StudentRegistrationPage()
         registration_page.open()
 
@@ -20,7 +28,7 @@ def test_student_registration_form():
     with allure.step('Отмечаем радио-баттон Gender'):
         registration_page.select_gender('Female')
 
-    with allure.step('Заполняем поле ввод Mobile Number'):
+    with allure.step('Заполняем поле ввода Mobile Number'):
         registration_page.type_user_number('9001234567')
 
     with allure.step('Указываем дату рождения'):
@@ -38,7 +46,7 @@ def test_student_registration_form():
     with allure.step('Заполняем поле ввода Current Address'):
         registration_page.type_address('Saint-Petersburg, 190000')
 
-    with allure.step('Выбираем из выпадющего списка штат'):
+    with allure.step('Выбираем из выпадающего списка штат'):
         registration_page.type_state('NCR')
 
     with allure.step('Выбираем из выпадающего списка город'):
@@ -48,7 +56,7 @@ def test_student_registration_form():
         registration_page.element_submit_registration_form()
 
     # THEN
-    with allure.step('Проверяем заполнение форма регистрации'):
+    with allure.step('Проверяем заполнение формы регистрации'):
         registration_page.should_have_registered_user_with(
             'Anna Fedorova',
             'email@mail.com',
